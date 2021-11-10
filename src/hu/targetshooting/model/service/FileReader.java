@@ -11,7 +11,7 @@ public class FileReader {
     public List<String> read(String filename) {
         List<String> lines = new ArrayList<>();
         try {
-            lines= Files.readAllLines(Path.of(filename));
+            lines = Files.readAllLines(Path.of(filename));
         } catch (IOException e) {
             e.printStackTrace();
         }

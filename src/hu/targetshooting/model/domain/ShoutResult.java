@@ -1,5 +1,7 @@
 package hu.targetshooting.model.domain;
 
+import hu.targetshooting.model.service.ShotResultHelper;
+
 public class ShoutResult {
 
     private final int id;
@@ -9,7 +11,7 @@ public class ShoutResult {
     public ShoutResult(int id, String shots) {
         this.id = id;
         this.shots = shots;
-        this.score = 0;
+        this.score = ShotResultHelper.getScore(shots);
     }
 
     public int getId() {
@@ -18,5 +20,8 @@ public class ShoutResult {
 
     public int getScore() {
         return score;
+    }
+    public boolean hasTwoSuccessShotsInRow() {
+        return shots.contains("++");
     }
 }
