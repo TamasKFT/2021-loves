@@ -2,16 +2,17 @@ package hu.targetshooting.model.domain;
 
 import hu.targetshooting.model.service.ShotResultHelper;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ShoutResult {
+public class ShotResult {
 
     private final int id;
     private final String shots;
     private final int score;
 
-    public ShoutResult(int id, String shots) {
+    public ShotResult(int id, String shots) {
         this.id = id;
         this.shots = shots;
         this.score = ShotResultHelper.getScore(shots);
@@ -38,6 +39,18 @@ public class ShoutResult {
                 .filter(i -> shots.charAt(i) == '+')
                 .mapToObj(i ->String.valueOf(i + 1))
                 .collect(Collectors.joining(" "));
+    }
+    public long countSuccessShot() {
+        return shots.chars()
+                .filter(i -> (char) i == '+')
+                .count();
+    }
+
+    public int getLongestSuccessSequenceSize() {
+        return Arrays.stream(shots.split("-"))
+                .mapToInt(String::length)
+                .max()
+                .getAsInt();
 
     }
 }

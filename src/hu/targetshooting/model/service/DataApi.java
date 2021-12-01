@@ -1,6 +1,6 @@
 package hu.targetshooting.model.service;
 
-import hu.targetshooting.model.domain.ShoutResult;
+import hu.targetshooting.model.domain.ShotResult;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class DataApi {
         this.dataParser = dataParser;
     }
 
-    public List<ShoutResult> getData(String filename) {
+    public List<ShotResult> getData(String filename) {
         return dataParser.parse(fileReader.read(filename));
     }
 }
